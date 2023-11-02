@@ -1,10 +1,12 @@
 #!/usr/bin/python3
-import sys
+if __name__ == "__main__":
 
-sum = 0
-lis = sys.argv[1:]
+    import sys
 
-for i in lis:
-    sum += int(i)
+    sum = 0
+    lis = sys.argv[1:]
 
-print("{}".format(sum))
+    for i in lis:
+        sum += int(i)
+
+    print("{}".format(sum))
