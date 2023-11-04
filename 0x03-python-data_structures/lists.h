@@ -2,7 +2,8 @@
 #define LISTS_H
 
 #include <stdlib.h>
-
+#include <stdio.h>
+#include <unistd.h>
 
 /**
  * struct listint_s - singly linked list
@@ -10,7 +11,7 @@
  * @next: points to the next node
  *
  * Description: singly linked list node structure
- * for project
+ * for Holberton project
  */
 typedef struct listint_s
 {
@@ -24,4 +25,4 @@ void free_listint(listint_t *head);
 
 int is_palindrome(listint_t **head);
 
-#endif
+#endif /* LISTS_H */
