@@ -1,7 +1,5 @@
 #include "lists.h"
-#include <stdlib.h>
-#include <stdio.h>
-#include <unistd.h>
+
 
 /**
  * is_palindrome - checks if a linked list is a palindrome
@@ -26,8 +24,12 @@ int is_palindrome(listint_t **head)
 	}
 	mid = len / 2;
 
-	int arr[len];
+	int *arr = malloc(mid * sizeof(int));
 
+	if (arr == NULL)
+	{
+		return (0);
+	}
 	for (i = 0; start; i++)
 	{
 		arr[i] = start->n;
