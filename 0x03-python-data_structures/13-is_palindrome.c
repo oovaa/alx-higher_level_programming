@@ -13,6 +13,7 @@ int is_palindrome(listint_t **head)
 	listint_t *last = *head, *start = *head;
 	int len = 0;
 	int mid, i, j;
+	int *arr;
 
 	if (*head == NULL || (*head)->next == NULL)
 		return (1);
@@ -24,7 +25,7 @@ int is_palindrome(listint_t **head)
 	}
 	mid = len / 2;
 
-	int *arr = malloc(mid * sizeof(int));
+	arr = malloc(mid * sizeof(int));
 
 	if (arr == NULL)
 	{
