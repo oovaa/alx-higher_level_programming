@@ -1,6 +1,5 @@
 #include "lists.h"
 
-
 /**
  * is_palindrome - checks if a linked list is a palindrome
  * @head: double pointer to the linked list
@@ -10,39 +9,31 @@
 
 int is_palindrome(listint_t **head)
 {
-	listint_t *last = *head, *start = *head;
-	int len = 0;
-	int mid, i, j;
-	int *arr;
-
 	if (*head == NULL || (*head)->next == NULL)
 		return (1);
 
-	while (last)
-	{
-		last = last->next;
-		len++;
-	}
-	mid = len / 2;
+	listint_t *slow = *head, *fast = *head, *prev = NULL, *temp;
 
-	arr = malloc(mid * sizeof(int));
+	while (fast != NULL && fast->next != NULL)
+	{
+		fast = fast->next->next;
 
-	if (arr == NULL)
-	{
-		return (0);
-	}
-	for (i = 0; start; i++)
-	{
-		arr[i] = start->n;
-		start = start->next;
+		temp = slow->next;
+		slow->next = prev;
+		prev = slow;
+		slow = temp;
 	}
 
-	j = len - 1;
+	if (fast != NULL)
+		slow = slow->next;
 
-	for (i = 0; i < mid; i++, j--)
+	while (slow != NULL)
 	{
-		if (arr[i] != arr[j])
+		if (slow->n != prev->n)
 			return (0);
+
+		slow = slow->next;
+		prev = prev->next;
 	}
 
 	return (1);
