@@ -14,3 +14,21 @@ def gv(rl):
 
 def roman_to_int(roman_string):
     ans = 0
+    i = 0
+
+    if not roman_string:
+        return 0
+
+    while i < len(roman_string) - 1:
+
+        if gv(roman_string[i]) < gv(roman_string[i+1]):
+            ans += gv(roman_string[i+1]) - gv(roman_string[i])
+            i += 1
+        else:
+            ans += gv(roman_string[i])
+
+        i += 1
+    if i < len(roman_string):
+        ans += gv(roman_string[i])
+
+    return ans
