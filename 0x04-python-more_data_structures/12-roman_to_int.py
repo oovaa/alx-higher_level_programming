@@ -16,7 +16,7 @@ def roman_to_int(roman_string):
     ans = 0
     i = 0
 
-    if not roman_string:
+    if not roman_string or not isinstance(roman_string, str):
         return 0
 
     while i < len(roman_string) - 1:
