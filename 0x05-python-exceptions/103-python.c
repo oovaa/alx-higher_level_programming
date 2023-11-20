@@ -17,10 +17,12 @@ void print_python_float(PyObject *p)
 		printf("  [ERROR] Invalid Float Object\n");
 		return;
 	}
-	value = ((PyFloatObject *)p)->ob_fval;
+	value = PyFloat_AS_DOUBLE(p);
 	string = PyOS_double_to_string(value, 'r', 0, Py_DTSF_ADD_DOT_0, NULL);
 	printf("  value: %s\n", string);
+	PyMem_Free(string);
 }
+
 /**
  * print_python_bytes - gives data of the PyBytesObject
  * @p: the PyObject
