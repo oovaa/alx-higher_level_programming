@@ -39,7 +39,7 @@ void print_python_bytes(PyObject *p)
 	}
 	size = PyBytes_Size(p);
 	printf("  size: %zd\n", size);
-	string = PyBytes_AsString(p);
+	string = (assert(PyBytes_Check(p)), (((PyBytesObject *)(p))->ob_sval));
 	printf("  trying string: %s\n", string);
 	printf("  first %zd bytes:", size < 10 ? size + 1 : 10);
 	while (i < size + 1 && i < 10)
@@ -49,7 +49,6 @@ void print_python_bytes(PyObject *p)
 	}
 	printf("\n");
 }
-
 /**
  * print_python_list - gives data of the PyListObject
  * @p: the PyObject
