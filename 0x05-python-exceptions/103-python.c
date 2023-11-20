@@ -1,67 +1,54 @@
 #include <Python.h>
 #include <stdio.h>
-
 /**
  * print_python_float - gives data of the PyFloatObject
  * @p: the PyObject
  */
 void print_python_float(PyObject *p)
 {
-	double value;
+	double value = 0;
 	char *string = NULL;
 
+	fflush(stdout);
 	printf("[.] float object info\n");
 
-	if (!PyFloat_Check(p))
+	if (!PyFloat_CheckExact(p))
 	{
 		printf("  [ERROR] Invalid Float Object\n");
 		return;
 	}
-
 	value = ((PyFloatObject *)p)->ob_fval;
 	string = PyOS_double_to_string(value, 'r', 0, Py_DTSF_ADD_DOT_0, NULL);
 	printf("  value: %s\n", string);
-
 }
-
 /**
  * print_python_bytes - gives data of the PyBytesObject
  * @p: the PyObject
  */
 void print_python_bytes(PyObject *p)
 {
-	char *byteString;
+	Py_ssize_t size = 0, i = 0;
+	char *string = NULL;
 
-	if (!p || !PyBytes_Check(p))
-	{
-		fprintf(stderr, "[!] Invalid argument. Expected a bytes object.\n");
-		return;
-	}
-	assert(PyBytes_Check(p));
-
-	PyBytesObject *byteObj = (PyBytesObject *)p;
-
+	fflush(stdout);
 	printf("[.] bytes object info\n");
-	printf("  size: %ld\n", PyBytes_Size(p));
-
-	byteString = PyBytes_AsString(p);
-	if (!byteString)
+	if (!PyBytes_CheckExact(p))
 	{
-		fprintf(stderr, "[!] Failed to retrieve string from bytes object.\n");
+		printf("  [ERROR] Invalid Bytes Object\n");
 		return;
 	}
-
-	printf("  trying string: %s\n", PyBytes_AsString(p));
-
-	printf("  first 6 bytes: ");
-	for (Py_ssize_t i = 0; i < 6 && i < PyBytes_Size(p); ++i)
+	size = PyBytes_Size(p);
+	printf("  size: %zd\n", size);
+	string = (assert(PyBytes_Check(p)), (((PyBytesObject *)(p))->ob_sval));
+	printf("  trying string: %s\n", string);
+	printf("  first %zd bytes:", size < 10 ? size + 1 : 10);
+	while (i < size + 1 && i < 10)
 	{
-		printf("%02x ", (unsigned char)byteObj->ob_sval[i]);
+		printf(" %02hhx", string[i]);
+		i++;
 	}
 	printf("\n");
 }
-
-
 /**
  * print_python_list - gives data of the PyListObject
  * @p: the PyObject
@@ -72,11 +59,9 @@ void print_python_list(PyObject *p)
 	PyObject *item;
 	int i = 0;
 
+	fflush(stdout);
 	printf("[*] Python list info\n");
-
-	if (!PyList_CheckExact(p))
-		printf("  [ERROR] Invalid List Object\n");
-	else
+	if (PyList_CheckExact(p))
 	{
 		size = PyList_GET_SIZE(p);
 		printf("[*] Size of the Python List = %zd\n", size);
@@ -92,5 +77,6 @@ void print_python_list(PyObject *p)
 			i++;
 		}
 	}
-
+	else
+		printf("  [ERROR] Invalid List Object\n");
 }

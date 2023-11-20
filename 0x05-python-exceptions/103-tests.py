@@ -40,3 +40,5 @@ print(l)
 lib.print_python_list(l)
 lib.print_python_float(l)
 lib.print_python_list(f)
+
+# /usr/bgcc -Wall -Werror -Wextra -pedantic -std=c99 -shared -Wl,-soname,libPython.so -o libPython.so -fPIC -I/usr/include/python3.10 103-python.c
