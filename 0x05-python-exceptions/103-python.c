@@ -17,12 +17,10 @@ void print_python_float(PyObject *p)
 		printf("  [ERROR] Invalid Float Object\n");
 		return;
 	}
-	value = PyFloat_AS_DOUBLE(p);
+	value = ((PyFloatObject *)p)->ob_fval;
 	string = PyOS_double_to_string(value, 'r', 0, Py_DTSF_ADD_DOT_0, NULL);
 	printf("  value: %s\n", string);
-	PyMem_Free(string);
 }
-
 /**
  * print_python_bytes - gives data of the PyBytesObject
  * @p: the PyObject
@@ -41,7 +39,7 @@ void print_python_bytes(PyObject *p)
 	}
 	size = PyBytes_Size(p);
 	printf("  size: %zd\n", size);
-	string = (assert(PyBytes_Check(p)), (((PyBytesObject *)(p))->ob_sval));
+	string = PyBytes_AsString(p);
 	printf("  trying string: %s\n", string);
 	printf("  first %zd bytes:", size < 10 ? size + 1 : 10);
 	while (i < size + 1 && i < 10)
@@ -51,6 +49,7 @@ void print_python_bytes(PyObject *p)
 	}
 	printf("\n");
 }
+
 /**
  * print_python_list - gives data of the PyListObject
  * @p: the PyObject
