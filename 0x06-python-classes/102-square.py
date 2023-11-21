@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
 Square Module
-Defines a Square class that represents a square with a size and various methods.
+Defines a Square class that represents a square with a size and .
 
 """
 
@@ -107,7 +107,7 @@ class Square:
 
     def __le__(self, other):
         """
-        Checks if the area of the current Square instance is less than or equal to
+        Checks if the area of the current Square instance is less than  to
         the area of another Square instance.
 
         Args:
@@ -139,7 +139,7 @@ class Square:
 
     def __ge__(self, other):
         """
-        Checks if the area of the current Square instance is greater than or equal to
+        Checks if the area of the current Square instance is greater than
         the area of another Square instance.
 
         Args:
