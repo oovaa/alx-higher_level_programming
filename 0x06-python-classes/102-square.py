@@ -19,7 +19,7 @@ class Square:
             ValueError: If size is less than 0.
 
         """
-        self.__size = size
+        self.size = size
 
     @property
     def size(self):
@@ -72,8 +72,7 @@ class Square:
             bool: True if the areas are equal, False otherwise.
 
         """
-        if isinstance(other, Square):
-            return self.area() == other.area()
+        return self.area() == other.area()
         return False
 
     def __ne__(self, other):
@@ -87,7 +86,7 @@ class Square:
             bool: True if the areas are not equal, False otherwise.
 
         """
-        return not self.__eq__(other)
+        return self.area() != other.area()
 
     def __lt__(self, other):
         """
@@ -101,9 +100,7 @@ class Square:
             bool: True if the area is less, False otherwise.
 
         """
-        if isinstance(other, Square):
-            return self.area() < other.area()
-        return NotImplemented
+        return self.area() < other.area()
 
     def __le__(self, other):
         """
@@ -117,9 +114,7 @@ class Square:
             bool: True if the area is less than or equal, False otherwise.
 
         """
-        if isinstance(other, Square):
-            return self.area() <= other.area()
-        return NotImplemented
+        return self.area() <= other.area()
 
     def __gt__(self, other):
         """
@@ -133,9 +128,7 @@ class Square:
             bool: True if the area is greater, False otherwise.
 
         """
-        if isinstance(other, Square):
-            return self.area() > other.area()
-        return NotImplemented
+        return self.area() > other.area()
 
     def __ge__(self, other):
         """
@@ -149,6 +142,4 @@ class Square:
             bool: True if the area is greater than or equal, False otherwise.
 
         """
-        if isinstance(other, Square):
-            return self.area() >= other.area()
-        return NotImplemented
+        return self.area() >= other.area()
