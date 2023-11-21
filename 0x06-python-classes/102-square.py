@@ -1,50 +1,26 @@
 #!/usr/bin/python3
-"""
-Square Module
-Defines a Square class that represents a square with a size and .
 
-"""
+"""Define a class Square."""
 
 
 class Square:
+    """Represent a square."""
+
     def __init__(self, size=0):
-        """
-        Initializes a Square instance.
+        """Initialize a new square.
 
         Args:
-            size (int): The size of the square.
-
-        Raises:
-            TypeError: If size is not an integer.
-            ValueError: If size is less than 0.
-
+            size (int): The size of the new square.
         """
         self.size = size
 
     @property
     def size(self):
-        """
-        Getter method for the size of the square.
-
-        Returns:
-            int: The size of the square.
-
-        """
-        return self.__size
+        """Get/set the current size of the square."""
+        return (self.__size)
 
     @size.setter
     def size(self, value):
-        """
-        Setter method for the size of the square.
-
-        Args:
-            value (int): The new size of the square.
-
-        Raises:
-            TypeError: If value is not an integer.
-            ValueError: If value is less than 0.
-
-        """
         if not isinstance(value, int):
             raise TypeError("size must be an integer")
         elif value < 0:
@@ -52,94 +28,29 @@ class Square:
         self.__size = value
 
     def area(self):
-        """
-        Calculates and returns the area of the square.
-
-        Returns:
-            int: The area of the square.
-
-        """
-        return self.__size * self.__size
+        """Return the current area of the square."""
+        return (self.__size * self.__size)
 
     def __eq__(self, other):
-        """
-        Checks if two Square instances are equal based on their area.
-
-        Args:
-            other (Square): The other Square instance to compare.
-
-        Returns:
-            bool: True if the areas are equal, False otherwise.
-
-        """
+        """Define the == comparision to a Square."""
         return self.area() == other.area()
-        return False
 
     def __ne__(self, other):
-        """
-        Checks if two Square instances are not equal based on their area.
-
-        Args:
-            other (Square): The other Square instance to compare.
-
-        Returns:
-            bool: True if the areas are not equal, False otherwise.
-
-        """
+        """Define the != comparison to a Square."""
         return self.area() != other.area()
 
     def __lt__(self, other):
-        """
-        Checks if the area of the current Square instance is less than
-        the area of another Square instance.
-
-        Args:
-            other (Square): The other Square instance to compare.
-
-        Returns:
-            bool: True if the area is less, False otherwise.
-
-        """
+        """Define the < comparison to a Square."""
         return self.area() < other.area()
 
     def __le__(self, other):
-        """
-        Checks if the area of the current Square instance is less than  to
-        the area of another Square instance.
-
-        Args:
-            other (Square): The other Square instance to compare.
-
-        Returns:
-            bool: True if the area is less than or equal, False otherwise.
-
-        """
+        """Define the <= comparison to a Square."""
         return self.area() <= other.area()
 
     def __gt__(self, other):
-        """
-        Checks if the area of the current Square instance is greater than
-        the area of another Square instance.
-
-        Args:
-            other (Square): The other Square instance to compare.
-
-        Returns:
-            bool: True if the area is greater, False otherwise.
-
-        """
+        """Define the > comparison to a Square."""
         return self.area() > other.area()
 
     def __ge__(self, other):
-        """
-        Checks if the area of the current Square instance is greater than
-        the area of another Square instance.
-
-        Args:
-            other (Square): The other Square instance to compare.
-
-        Returns:
-            bool: True if the area is greater than or equal, False otherwise.
-
-        """
+        """Define the >= compmarison to a Square."""
         return self.area() >= other.area()
