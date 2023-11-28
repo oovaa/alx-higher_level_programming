@@ -42,7 +42,7 @@ def print_solutions(solutions):
 
 def main():
     """
-    Main function to handle command-line arguments and solve the N-Queens problem
+    Main function to handle command-line arguments and solve the N-Queens
     """
     if len(sys.argv) != 2:
         print("Usage: {} N".format(sys.argv[0]))
