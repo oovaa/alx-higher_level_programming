@@ -18,9 +18,9 @@ def is_safe(board, row, col, n):
     return True
 
 
-def solve_nqueens(board, row, n, solutions):
+def place_queens(board, row, n, solutions):
     """
-    Recursively solve the N-Queens problem
+    Recursively place queens on the chessboard
     """
     if row == n:
         solution = [[i, board[i]] for i in range(n)]
@@ -29,7 +29,7 @@ def solve_nqueens(board, row, n, solutions):
     for col in range(n):
         if is_safe(board, row, col, n):
             board[row] = col
-            solve_nqueens(board, row + 1, n, solutions)
+            place_queens(board, row + 1, n, solutions)
 
 
 def print_solutions(solutions):
@@ -60,7 +60,7 @@ def main():
 
     board = [-1] * n
     solutions = []
-    solve_nqueens(board, 0, n, solutions)
+    place_queens(board, 0, n, solutions)
     print_solutions(solutions)
 
 
