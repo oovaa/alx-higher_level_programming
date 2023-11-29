@@ -8,7 +8,7 @@ def lazy_matrix_mul(m_a, m_b):
     """
     Multiply two matrices using NumPy.
 
-    This function uses NumPy to perform matrix multiplication on two input matrices,
+    This function uses NumPy to perform matrix multiplication on two input
     `m_a` and `m_b`.
 
     Parameters:
