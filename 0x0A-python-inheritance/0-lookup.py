@@ -1,8 +1,8 @@
 #!/usr/bin/python3
-"""some modual"""
+"""Defines an object attribute lookup function."""
 
 
-def get_attributes_and_methods(obj):
+def lookup(obj):
     """
     Function that returns the list of available attributes  of an obj
     """
