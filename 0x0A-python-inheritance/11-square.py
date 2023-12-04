@@ -37,4 +37,4 @@ class Square(Rectangle):
         This method prints the square's details. It's an additional method for
         and utilizes the __str__ method for its output.
         """
-        print(self.__str__)
+        print(self.__str__())
