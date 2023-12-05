@@ -26,7 +26,6 @@ if __name__ == "__main__":
         roal = 0  # Variable to count the number of lines processed
         valid_codes = ['200', '301', '400', '401', '403', '404', '405', '500']
 
-
         for line in sys.stdin:
             line = line.split()
 
