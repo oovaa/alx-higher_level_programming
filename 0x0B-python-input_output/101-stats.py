@@ -24,6 +24,8 @@ if __name__ == "__main__":
         codes = {}  # Dictionary to store status codes and their counts
         tot = 0  # Variable to store total file size
         roal = 0  # Variable to count the number of lines processed
+        valid_codes = ['200', '301', '400', '401', '403', '404', '405', '500']
+
 
         for line in sys.stdin:
             line = line.split()
@@ -36,7 +38,8 @@ if __name__ == "__main__":
             tot += num
 
             # Update status code count
-            codes[stat] = codes.get(stat, 0) + 1
+            if stat in valid_codes:
+                codes[stat] = codes.get(stat, 0) + 1
 
             # Increment the line count and print stats every 10 lines
             roal += 1
