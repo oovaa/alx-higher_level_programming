@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+"""i hate docs"""
+
 
 def append_write(filename="", text=""):
     """
