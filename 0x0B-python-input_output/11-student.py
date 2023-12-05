@@ -44,3 +44,8 @@ class Student:
                     for attr in attrs if hasattr(self, attr)}
 
         return self.__dict__
+
+    def reload_from_json(self, json):
+        """loads new values from dict"""
+        for i in json.items():
+            setattr(self, i[0], i[1])
