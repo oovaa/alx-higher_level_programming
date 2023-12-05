@@ -43,10 +43,4 @@ class Student:
             r = {attr: getattr(self, attr)
                  for attr in attrs if hasattr(self, attr)}
 
-        r = {
-            "first_name": self.first_name,
-            "last_name": self.last_name,
-            "age": self.age
-        }
-
-        return r
+        return self.__dict__
