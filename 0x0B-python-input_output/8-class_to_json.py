@@ -2,9 +2,6 @@
 """class to json modual"""
 
 
-import json
-
-
 def class_to_json(obj):
     """
     Convert the attributes of an object into a JSON string.
@@ -22,4 +19,4 @@ obj (object): The object whose attributes are to be serialized.
     Returns:
 str: A JSON string representing the serialized attributes of the object.
     """
-    return json.dumps(obj.__dict__)
+    return obj.__dict__
