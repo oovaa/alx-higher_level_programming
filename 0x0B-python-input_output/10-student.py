@@ -31,7 +31,7 @@ class Student:
         self.last_name = last_name
         self.age = age
 
-    def to_json(self):
+    def to_json(self, attrs=None):
         """Convert the student's attributes to a dictionary.
 
     This method creates and returns a dictionary representation of the student,
@@ -39,9 +39,14 @@ class Student:
     Returns:
             dict: A dictionary containing the student's attributes.
         """
-        result = {
+        if type(attrs) is list and all(isinstance(x, str) for x in attrs):
+            r = {attr: getattr(self, attr)
+                 for attr in attrs if hasattr(self, attr)}
+
+        r = {
             "first_name": self.first_name,
             "last_name": self.last_name,
             "age": self.age
         }
-        return result
+
+        return r
