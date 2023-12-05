@@ -21,7 +21,7 @@ def read_file(filename=""):
                         to an empty string, which will cause an error.
 
     Returns:
-        None: This function does not return any value. It prints the file content
+        None: This function does not return any value. It prints the file
               to the standard output.
     """
     with open(filename, "r", encoding="utf-8") as f:

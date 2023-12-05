@@ -17,8 +17,8 @@ def write_file(filename="", text=""):
     The function assumes the file is encoded in UTF-8.
 
     Args:
-        filename (str): The name of the file where the text will be written. 
-                        If the filename is empty, a ValueError will be raised.
+        filename (str): The name of the file where the text will be writte
+                If the filename is empty, a ValueError will be raised.
         text (str): The text to be written to the file.
 
     Returns:
