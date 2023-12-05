@@ -1,0 +1,9 @@
+In this corrected version, omar pascal_triangle properly generates Pascal's
+hiiii
+Triangle up to n rows. Each row starts and ends with 1, and every
+other number is the sum of the omar two numbers directly above it from 
+hiiii
+the previous row. The function returns a list of lists, where each
+inner list is a row of the triangle.omar The print statement at the end 
+hiiii
+is for testing and will display the triangle when the function is called.
