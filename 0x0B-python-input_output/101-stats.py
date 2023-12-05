@@ -19,30 +19,31 @@ def print_stats(total_size, status_codes):
         print("{}: {}".format(status, status_codes[status]))
 
 
-try:
-    codes = {}  # Dictionary to store status codes and their counts
-    tot = 0  # Variable to store total file size
-    roal = 0  # Variable to count the number of lines processed
+if __name__ == "__main__":
+    try:
+        codes = {}  # Dictionary to store status codes and their counts
+        tot = 0  # Variable to store total file size
+        roal = 0  # Variable to count the number of lines processed
 
-    for line in sys.stdin:
-        line = line.split()
+        for line in sys.stdin:
+            line = line.split()
 
-        # Extract status code and file size from the line
-        stat = line[-2]
-        num = int(line[-1])
+            # Extract status code and file size from the line
+            stat = line[-2]
+            num = int(line[-1])
 
-        # Update total file size
-        tot += num
+            # Update total file size
+            tot += num
 
-        # Update status code count
-        codes[stat] = codes.get(stat, 0) + 1
+            # Update status code count
+            codes[stat] = codes.get(stat, 0) + 1
 
-        # Increment the line count and print stats every 10 lines
-        roal += 1
-        if roal % 10 == 0:
-            print_stats(tot, codes)
+            # Increment the line count and print stats every 10 lines
+            roal += 1
+            if roal % 10 == 0:
+                print_stats(tot, codes)
 
-except KeyboardInterrupt:
-    # Print stats upon keyboard interruption
-    print_stats(tot, codes)
-    raise
+    except KeyboardInterrupt:
+        # Print stats upon keyboard interruption
+        print_stats(tot, codes)
+        raise
