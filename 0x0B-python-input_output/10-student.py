@@ -40,7 +40,7 @@ class Student:
             dict: A dictionary containing the student's attributes.
         """
         if type(attrs) is list and all(isinstance(x, str) for x in attrs):
-            r = {attr: getattr(self, attr)
-                 for attr in attrs if hasattr(self, attr)}
+            return {attr: getattr(self, attr)
+                    for attr in attrs if hasattr(self, attr)}
 
         return self.__dict__
