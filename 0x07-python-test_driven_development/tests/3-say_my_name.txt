@@ -1,0 +1,35 @@
+
+>>> say_my_name = __import__("3-say_my_name").say_my_name
+>>> say_my_name("omar", tata)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'tata' is not defined
+
+>>> say_my_name("omar", "tata")
+My name is omar tata
+
+
+>>> say_my_name("omar", None)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/home/omar/alx/alx-higher_level_programming/0x07-python-test_driven_development/3-say_my_name.py", line 11, in say_my_name
+    raise TypeError("last_name must be a string")
+TypeError: last_name must be a string
+
+>>> say_my_name("omar", 23)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/home/omar/alx/alx-higher_level_programming/0x07-python-test_driven_development/3-say_my_name.py", line 11, in say_my_name
+    raise TypeError("last_name must be a string")
+TypeError: last_name must be a string
+
+>>> say_my_name("omar")
+My name is omar 
+
+
+>>> say_my_name(None, "abdo")
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/home/omar/alx/alx-higher_level_programming/0x07-python-test_driven_development/3-say_my_name.py", line 9, in say_my_name
+    raise TypeError("first_name must be a string")
+TypeError: first_name must be a string
