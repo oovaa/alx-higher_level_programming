@@ -5,6 +5,7 @@ task 4
 
 
 def print_square(size):
+    """the dum function"""
 
     if not isinstance(size, (int, float)):
         raise TypeError("size must be an integer")
