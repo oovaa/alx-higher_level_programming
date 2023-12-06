@@ -2,6 +2,8 @@
 """dum docs
 task 4
 """
+
+
 def print_square(size):
 
     if not isinstance(size, (int, float)):
