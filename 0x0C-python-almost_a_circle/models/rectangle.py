@@ -84,3 +84,7 @@ class Rectangle(Base):
 
         for k, v in kwargs.items():
             setattr(self, k, v)
+
+    def to_dictionary(self):
+        atrs_list = ["x", "y", "id", "height", "width"]
+        return {x: getattr(self, x) for x in atrs_list}
