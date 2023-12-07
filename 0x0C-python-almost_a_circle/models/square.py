@@ -52,3 +52,7 @@ class Square(Rectangle):
             setattr(self, atr, value)
         for k, v in kwargs.items():
             setattr(self, k, v)
+
+    def to_dictionary(self):
+        atrs_list = ["id", "x", "size", "y"]
+        return {x: getattr(self, x) for x in atrs_list}
