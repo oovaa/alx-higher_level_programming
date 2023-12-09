@@ -53,3 +53,14 @@ class Base:
         dummy = cls(1, 1)
         dummy.update(**dictionary)
         return dummy
+
+    @classmethod
+    def load_from_file(cls):
+        filename = cls.__name__ + ".json"
+
+        with open(filename, "r") as fh:
+            dicslist = json.load(fh)
+
+        instaces_list = [cls.create(**x) for x in dicslist]
+
+        return instaces_list
