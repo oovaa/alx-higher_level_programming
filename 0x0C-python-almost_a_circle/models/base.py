@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 import json
 import csv
+import turtle as tr
 
 
 class Base:
@@ -13,6 +14,7 @@ class Base:
             Base.__nb_objects += 1
             self.id = Base.__nb_objects
 
+    @staticmethod
     def to_json_string(list_dictionaries):
         return json.dumps(list_dictionaries)
 
@@ -106,3 +108,35 @@ class Base:
         except FileNotFoundError:
             pass
         return objects
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        screen = tr.Screen()
+        turtle = tr.Turtle()
+
+        # Draw squares
+        for square in list_squares:
+            turtle.penup()
+            turtle.goto(square.x, square.y)  # Move to the starting position of the square
+            turtle.pendown()
+            for _ in range(4):
+                turtle.forward(square.size)
+                turtle.right(90)
+
+        # Separate the drawing of rectangles and squares by a gap
+        turtle.penup()
+        turtle.goto(200, 0)  # This is an arbitrary gap; adjust as needed
+        turtle.pendown()
+
+        # Draw rectangles
+        for rec in list_rectangles:
+            turtle.penup()
+            turtle.goto(rec.x, rec.y)  # Move to the starting position of the rectangle
+            turtle.pendown()
+            for _ in range(2):
+                turtle.forward(rec.width)
+                turtle.right(90)
+                turtle.forward(rec.height)
+                turtle.right(90)
+
+        tr.done()
