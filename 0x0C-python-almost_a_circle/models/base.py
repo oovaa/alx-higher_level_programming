@@ -16,7 +16,7 @@ class Base:
 
     @staticmethod
     def to_json_string(list_dictionaries):
-        return json.dumps(list_dictionaries)
+        return json.dumps(list_dictionaries) if list_dictionaries is not None else "[]"
 
     @classmethod
     def save_to_file(cls, list_objs):
@@ -60,30 +60,41 @@ class Base:
     @classmethod
     def load_from_file(cls):
         filename = cls.__name__ + ".json"
+        instances_list = []
 
-        with open(filename, "r") as fh:
-            dicslist = json.load(fh)
+        try:
+            with open(filename, "r") as fh:
+                # This is a list of dictionaries
+                dicts_list = json.load(fh)
+                # Create instances from dictionaries
+                instances_list = [cls.create(**d) for d in dicts_list]
+        except (FileNotFoundError, json.JSONDecodeError):
+            # If the file doesn't exist, we can either pass, return an empty list,
+            # or perhaps even create the file. For now, we'll just return an empty list.
+            return []
 
-        instaces_list = [cls.create(**x) for x in dicslist]
-
-        return instaces_list
+        return instances_list
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
 
         filename = cls.__name__ + ".csv"
 
-        with open(filename, 'w', newline='') as csvfile:
-            writer = csv.writer(csvfile)
+        if not list_objs:  # If the list is empty
+            with open(filename, 'w', newline='') as csvfile:
+                csvfile.write("[]")
+        else:
+            with open(filename, 'w', newline='') as csvfile:
+                writer = csv.writer(csvfile)
 
-            for obj in list_objs:
+                for obj in list_objs:
 
-                if cls.__name__ == 'Rectangle':
-                    writer.writerow(
-                        [obj.id, obj.width, obj.height, obj.x, obj.y])
+                    if cls.__name__ == 'Rectangle':
+                        writer.writerow(
+                            [obj.id, obj.width, obj.height, obj.x, obj.y])
 
-                elif cls.__name__ == 'Square':
-                    writer.writerow([obj.id, obj.size, obj.x, obj.y])
+                    elif cls.__name__ == 'Square':
+                        writer.writerow([obj.id, obj.size, obj.x, obj.y])
 
     @classmethod
     def load_from_file_csv(cls):
@@ -117,7 +128,8 @@ class Base:
         # Draw squares
         for square in list_squares:
             turtle.penup()
-            turtle.goto(square.x, square.y)  # Move to the starting position of the square
+            # Move to the starting position of the square
+            turtle.goto(square.x, square.y)
             turtle.pendown()
             for _ in range(4):
                 turtle.forward(square.size)
@@ -131,7 +143,8 @@ class Base:
         # Draw rectangles
         for rec in list_rectangles:
             turtle.penup()
-            turtle.goto(rec.x, rec.y)  # Move to the starting position of the rectangle
+            # Move to the starting position of the rectangle
+            turtle.goto(rec.x, rec.y)
             turtle.pendown()
             for _ in range(2):
                 turtle.forward(rec.width)

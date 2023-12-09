@@ -30,7 +30,7 @@ class Rectangle(Base):
 
     @x.setter
     def x(self, x):
-        if not isinstance(x, int):
+        if not isinstance(x, int) or isinstance(x, bool):
             raise TypeError("x must be an integer")
 
         if x < 0:
@@ -49,7 +49,7 @@ class Rectangle(Base):
 
     @width.setter
     def width(self, width):
-        if not isinstance(width, int):
+        if not isinstance(width, int) or isinstance(width, bool):
             raise TypeError("width must be an integer")
 
         if width <= 0:
@@ -79,11 +79,14 @@ class Rectangle(Base):
 
     def update(self, *args, **kwargs):
         attributes = ['id', 'width', 'height', 'x', 'y']
-        for attr, arg in zip(attributes, args):
-            setattr(self, attr, arg)
 
-        for k, v in kwargs.items():
-            setattr(self, k, v)
+        if args:
+            for attr, arg in zip(attributes, args):
+                setattr(self, attr, arg)
+        else:
+            for attr in kwargs:
+                if attr in attributes:
+                    setattr(self, attr, kwargs[attr])
 
     def to_dictionary(self):
         atrs_list = ["x", "y", "id", "height", "width"]
