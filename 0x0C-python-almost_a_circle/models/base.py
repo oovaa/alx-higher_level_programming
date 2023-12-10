@@ -16,7 +16,8 @@ class Base:
 
     @staticmethod
     def to_json_string(list_dictionaries):
-        return json.dumps(list_dictionaries) if list_dictionaries is not None else "[]"
+        return json.dumps(list_dictionaries) if list_dictionaries \
+            is not None else "[]"
 
     @classmethod
     def save_to_file(cls, list_objs):
@@ -69,8 +70,10 @@ class Base:
                 # Create instances from dictionaries
                 instances_list = [cls.create(**d) for d in dicts_list]
         except (FileNotFoundError, json.JSONDecodeError):
-            # If the file doesn't exist, we can either pass, return an empty list,
-            # or perhaps even create the file. For now, we'll just return an empty list.
+            # If the file doesn't exist, we can either pass,
+            # return an empty list,
+            # or perhaps even create the file. For now, we'll
+            # just return an empty list.
             return []
 
         return instances_list
