@@ -48,10 +48,12 @@ class Square(Rectangle):
 
     def update(self, *args, **kwargs):
         ats = ["id", "size", "x", "y"]
-        for atr, value in zip(ats, args):
-            setattr(self, atr, value)
-        for k, v in kwargs.items():
-            setattr(self, k, v)
+        if args and args != []:
+            for atr, value in zip(ats, args):
+                setattr(self, atr, value)
+        else:
+            for k, v in kwargs.items():
+                setattr(self, k, v)
 
     def to_dictionary(self):
         atrs_list = ["id", "x", "size", "y"]
