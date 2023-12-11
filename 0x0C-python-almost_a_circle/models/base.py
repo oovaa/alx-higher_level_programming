@@ -108,19 +108,22 @@ class Base:
             with open(filename, 'r', newline='') as csvfile:
                 reader = csv.reader(csvfile)
 
+                obj = None
                 for row in reader:
 
                     if cls.__name__ == 'Rectangle':
-                        obj = cls(int(row[1]), int(row[2]), int(
-                            row[3]), int(row[4]), int(row[0]))
+                        if len(row) == 5:
+                            obj = cls(int(row[1]), int(row[2]), int(
+                                row[3]), int(row[4]), int(row[0]))
 
                     elif cls.__name__ == 'Square':
-                        obj = cls(int(row[1]), int(row[2]),
-                                  int(row[3]), int(row[0]))
+                        if len(row) == 4:
+                            obj = cls(int(row[1]), int(row[2]),
+                                      int(row[3]), int(row[0]))
 
                     objects.append(obj)
         except FileNotFoundError:
-            pass
+            return []
         return objects
 
     @staticmethod
