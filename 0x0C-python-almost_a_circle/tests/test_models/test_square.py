@@ -212,7 +212,7 @@ class TestSquareEdgeCases(unittest.TestCase):
     def test_update_with_extra_args(self):
         s = Square(5)
         s.update(1, 2, 3, 4, 5, 6)
-        
+
         self.assertEqual(s.id, 1)
         self.assertEqual(s.size, 2)
         self.assertEqual(s.x, 3)
