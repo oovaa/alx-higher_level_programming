@@ -86,21 +86,16 @@ class Base:
             If the file does not exist - an empty list.
             Otherwise - a list of instantiated classes.
         """
-
         filename = cls.__name__ + ".json"
         instances_list = []
 
         try:
             with open(filename, "r") as fh:
                 # This is a list of dictionaries
-                dicts_list = json.load(fh)
+                dicts_list = Base.from_json_string(fh.read())
                 # Create instances from dictionaries
                 instances_list = [cls.create(**d) for d in dicts_list]
-        except (FileNotFoundError, json.JSONDecodeError):
-            # If the file doesn't exist, we can either pass,
-            # return an empty list,
-            # or perhaps even create the file. For now, we'll
-            # just return an empty list.
+        except (IOError):
             return []
 
         return instances_list
