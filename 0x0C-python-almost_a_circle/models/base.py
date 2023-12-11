@@ -56,16 +56,23 @@ class Base:
 
     @classmethod
     def save_to_file(cls, list_objs):
-        """Write the JSON serialization of a list of objects to a file.
+        """
+        Writes the JSON string representation of list_objs to a file.
 
         Args:
-            list_objs (list): A list of inherited Base instances.
+            list_objs (list): A list of instances that inherit from Base.
         """
-        list_dictionaries = [obj.to_dictionary()
-                             for obj in list_objs] if list_objs else []
-        json_string = json.dumps(list_dictionaries)
-
         filename = cls.__name__ + ".json"
+
+        if list_objs is None:
+            # If list_objs is None, write an empty list as JSON string.
+            json_string = "[]"
+        else:
+            # Convert list_objs to a list of dictionaries
+            list_dictionaries = [obj.to_dictionary() for obj in list_objs]
+            # Convert list of dictionaries to JSON string
+            json_string = cls.to_json_string(list_dictionaries)
+
         with open(filename, "w") as f:
             f.write(json_string)
 
@@ -109,11 +116,18 @@ class Base:
         Returns:
             An instance of cls with attributes set according to the dictionary.
         """
-        # Assuming the first two arguments of the constructor are
-        # mandatory like width and height.
-        # These will be overwritten by the dictionary values.
-        dummy = cls(1, 1)
+        # Creating a "dummy" instance with default values.
+        if cls.__name__ == 'Rectangle':
+            dummy = cls(1, 1)
+        elif cls.__name__ == 'Square':
+            dummy = cls(1)
+        else:
+            # Handle other potential subclasses or raise an error.
+            raise TypeError("Unknown class")
+
+        # Updating the dummy instance with actual values.
         dummy.update(**dictionary)
+
         return dummy
 
     @classmethod
