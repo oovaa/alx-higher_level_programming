@@ -183,7 +183,7 @@ class TestSquareEdgeCases(unittest.TestCase):
         self.assertEqual(s.size, 999999999)
 
     def test_boundary_size(self):
-        s = Square(0)
+        s = Square(1)
         with self.assertRaises(ValueError):
             s.size = 0
 
@@ -211,9 +211,12 @@ class TestSquareEdgeCases(unittest.TestCase):
 
     def test_update_with_extra_args(self):
         s = Square(5)
-        # Assuming IndexError is raised for extra args
-        with self.assertRaises(IndexError):
-            s.update(1, 2, 3, 4, 5, 6)
+        s.update(1, 2, 3, 4, 5, 6)
+        
+        self.assertEqual(s.id, 1)
+        self.assertEqual(s.size, 2)
+        self.assertEqual(s.x, 3)
+        self.assertEqual(s.y, 4)
 
 
 if __name__ == '__main__':
