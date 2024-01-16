@@ -1,5 +1,7 @@
--- Filename: 4-first_table.sql
+-- Filename: create_first_table.sql
 
--- Create a new table named 'first_table'
-CREATE TABLE IF NOT EXISTS `first_table` (`id` INT, `name` VARCHAR(256));
-
+-- Create the 'first_table' table with 'id' as primary key
+CREATE TABLE IF NOT EXISTS `first_table` (
+    `id` INT ,
+    `name` VARCHAR(256)
+);
