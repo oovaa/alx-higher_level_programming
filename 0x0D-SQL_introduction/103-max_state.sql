@@ -1,4 +1,4 @@
--- Write a script that displays the top 3 of cities temperature during July and August ordered by temperature (descending)
+-- Displays the max temperature of each state, ordered by state name.
 
 SELECT state, MAX(value) AS max_temp
 FROM `temperatures`
