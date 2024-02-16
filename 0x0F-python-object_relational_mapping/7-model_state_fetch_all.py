@@ -21,6 +21,6 @@ if __name__ == "__main__":
     table_data = session.query(State).all()
 
     for state in table_data:
-        print(f"ID: {state.id}, Name: {state.name}")
+        print(f"{state.id}: {state.name}")
 
     session.close()
