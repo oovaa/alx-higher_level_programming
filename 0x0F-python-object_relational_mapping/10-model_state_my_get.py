@@ -20,8 +20,8 @@ if __name__ == "__main__":
     state_name = sys.argv[4]
 
     count_states_with_name = session.query(State).filter(
-        State.name.like(f"%{state_name}%")).count()
+        State.name.like(f"%{state_name}%"))
 
-    print(count_states_with_name)
+    print(count_states_with_name[0].id)
 
     session.close()
