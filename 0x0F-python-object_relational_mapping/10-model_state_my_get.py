@@ -1,14 +1,13 @@
 #!/usr/bin/python3
 
-"""a script that prints the first State object
-from the database hbtn_0e_6_usa
+"""a script that prints the count of State objects
+from the database hbtn_0e_6_usa with a specific name
 """
 
 import sys
 from model_state import Base, State
-from sqlalchemy import (create_engine)
+from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-
 
 if __name__ == "__main__":
 
@@ -20,7 +19,9 @@ if __name__ == "__main__":
 
     state_name = sys.argv[4]
 
-    count_states_with_a = session.query(State).filter(
-        State.name.like(f"'{state_name}'")).count()
+    count_states_with_name = session.query(State).filter(
+        State.name.like(f"%{state_name}%")).count()
 
-    print(count_states_with_a)
+    print(count_states_with_name)
+
+    session.close()
