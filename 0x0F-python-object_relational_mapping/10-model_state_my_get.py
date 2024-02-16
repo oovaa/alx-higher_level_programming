@@ -23,4 +23,4 @@ if __name__ == "__main__":
     count_states_with_a = session.query(State).filter(
         State.name.like(f"'{state_name}'")).count()
 
-    first_state = session.query(State)
+    print(count_states_with_a)
