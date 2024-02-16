@@ -13,7 +13,8 @@ if __name__ == "__main__":
 
     cur = db.cursor()
 
-    cur.execute("SELECT cities.id, cities.name, (SELECT name FROM state WHERE s.id = ) FROM cities")
+    cur.execute(
+        "SELECT cities.id, cities.name, states.name FROM cities INNER JOIN states ON cities.state_id = states.id")
     full_table = cur.fetchall()
 
     [print(x) for x in full_table]
