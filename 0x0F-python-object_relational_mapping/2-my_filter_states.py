@@ -11,11 +11,10 @@ if __name__ == "__main__":
     db = MySQLdb.connect(host="localhost", user=sys.argv[1],
                          passwd=sys.argv[2], db=sys.argv[3], port=3306)
     to_search = sys.argv[4]
-    print(to_search)
 
     cur = db.cursor()
     cur.execute(
-        "SELECT * FROM states WHERE name = '{}'".format(to_search))
+        "SELECT * FROM states WHERE name = '{}' ORDER BY id ASC".format(to_search))
     rows = cur.fetchall()
     for r in rows:
         print(r)
