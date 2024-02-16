@@ -20,8 +20,11 @@ if __name__ == "__main__":
     state_name = sys.argv[4]
 
     count_states_with_nameid = session.query(State).filter(
-        State.name.like(f"{state_name}"))
+        State.name.like((f"{state_name}",)))
 
-    print(count_states_with_nameid)
+    try:
+        print(count_states_with_nameid[0].id)
+    except IndexError:
+        print("Not found")
 
     session.close()
