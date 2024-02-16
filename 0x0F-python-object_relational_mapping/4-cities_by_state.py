@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-"""a script that takes in an argument and displays 
-all values in the states table of hbtn_0e_0_usa 
+"""a script that takes in an argument and displays
+all values in the states table of hbtn_0e_0_usa
 where name matches the argument.
 """
 import sys
@@ -13,8 +13,8 @@ if __name__ == "__main__":
 
     cur = db.cursor()
 
-    cur.execute(
-        "SELECT cities.id, cities.name, states.name FROM cities INNER JOIN states ON cities.state_id = states.id")
+    cur.execute("""SELECT cities.id, cities.name, states.name FROM
+                cities INNER JOIN states ON states.id=cities.state_id""")
     full_table = cur.fetchall()
 
     [print(x) for x in full_table]

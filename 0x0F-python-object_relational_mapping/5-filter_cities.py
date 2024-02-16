@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Write a script that takes in the name of a state as an argument 
+"""Write a script that takes in the name of a state as an argument
 and lists all cities of that state, using the database hbtn_0e_4_usa
 """
 import sys
@@ -15,7 +15,9 @@ if __name__ == "__main__":
     cur = db.cursor()
 
     cur.execute(
-        "SELECT cities.name FROM cities INNER JOIN states ON cities.state_id = states.id WHERE states.name = '{}'".format(state_name))
+        """SELECT cities.name FROM cities INNER JOIN states
+        ON cities.state_id = states.id WHERE states.name = '{}'""".
+        format(state_name))
     full_table = cur.fetchall()
 
     print(', '.join(x[0] for x in full_table))
