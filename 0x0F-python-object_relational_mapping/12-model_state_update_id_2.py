@@ -19,11 +19,6 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    # 1 get the state
-    new_state = session.query(State).filter_by(id=2).first()
-
-    # 2 update it
-    new_state.name = "New Mexico"
-
-    # 3. Commit the session to persist the changes
+    new_instance = session.query(State).filter_by(id=2).first()
+    new_instance.name = 'New Mexico'
     session.commit()
