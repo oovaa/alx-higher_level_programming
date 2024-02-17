@@ -20,6 +20,7 @@ if __name__ == "__main__":
     session = Session()
 
     new_instance = session.query(State).filter_by(id=2).first()
+
     if new_instance:
         new_instance.name = 'New Mexico'
         session.commit()
