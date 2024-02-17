@@ -21,15 +21,13 @@ if __name__ == "__main__":
     session = Session()
     # Use all() to retrieve all instances that match the condition
     instances_to_delete = session.query(
-        State).filter(State.name.like("%a%")).all()
+        State).filter(State.name.like('%a%')).all()
 
-    # Check if there are any instances to delete
-    if instances_to_delete:
-        # Delete the instances
-        for instance in instances_to_delete:
-            session.delete(instance)
+    # Delete the instances
+    for instance in instances_to_delete:
+        session.delete(instance)
 
         # Commit the session to persist the changes
-        session.commit()
+    session.commit()
 
     session.close()
