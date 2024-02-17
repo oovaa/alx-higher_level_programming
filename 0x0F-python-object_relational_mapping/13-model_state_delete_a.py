@@ -20,5 +20,8 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    new_instance = session.query(State).filter(State.name.like("%a%")).delete()
-    session.commit()
+    new_instance = session.query(State).filter(State.name.like("%a%"))
+
+    if new_instance:
+        new_instance.delete()
+        session.commit()
