@@ -22,16 +22,13 @@ if __name__ == "__main__":
     # 1 get the state
     new_state = session.query(State).filter(State.id == 2).first()
 
-    if new_state:
-        # 2 update it
-        new_state.name = "New Mexico"
+    # 2 update it
+    new_state.name = "New Mexico"
 
-        # 3. Commit the session to persist the changes
-        session.commit()
+    # 3. Commit the session to persist the changes
+    session.commit()
 
-        # Access the newly added object's properties
-        print(new_state.id)
-    else:
-        print("State with id 2 not found")
+    # Access the newly added object's properties
+    print(new_state.id)
 
     session.close()
