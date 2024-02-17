@@ -27,8 +27,4 @@ if __name__ == "__main__":
 
     # 3. Commit the session to persist the changes
     session.commit()
-
-    # Access the newly added object's properties
-    print(new_state.id)
-
     session.close()
