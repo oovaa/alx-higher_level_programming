@@ -27,4 +27,3 @@ if __name__ == "__main__":
 
     # 3. Commit the session to persist the changes
     session.commit()
-    session.close()
