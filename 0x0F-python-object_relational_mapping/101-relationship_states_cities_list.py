@@ -1,10 +1,10 @@
 #!/usr/bin/python3
 
-"""a script that lists all State objects,
+"""
+a script that lists all State objects,
 and corresponding City objects,
 contained in the database hbtn_0e_101_usa
 """
-
 
 import sys
 from relationship_state import Base, State
@@ -25,8 +25,7 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    states = session.query(State).outerjoin(
-        City).order_by(State.id, City.id).all()
+    states = session.query(State).order_by(State.id).all()
 
     for state in states:
         print("{}: {}".format(state.id, state.name))
