@@ -8,6 +8,7 @@ contained in the database hbtn_0e_101_usa
 
 import sys
 from relationship_state import Base, State
+from relationship_city import Base, City
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
@@ -24,7 +25,7 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    states = session.query(State).order_by(State.id).all()
+    states = session.query(State).order_by(State.id)
 
     for state in states:
         print("{}: {}".format(state.id, state.name))
