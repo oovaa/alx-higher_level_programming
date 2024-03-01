@@ -14,10 +14,9 @@ import sys
 import requests
 
 if __name__ == '__main__':
-    if __name__ == '__main__':
-        if len(sys.argv) != 3:
-            print("Usage: python script.py <user> <repository>")
-            sys.exit(1)
+    if len(sys.argv) != 3:
+        print("Usage: python script.py <user> <repository>")
+        sys.exit(1)
 
     user = sys.argv[1]
     repos = sys.argv[2]
