@@ -2,13 +2,13 @@
 """Write a Python script that takes your GitHub credentials 
 (username and password) and uses the GitHub API to display your id
 """
-from sys import argv
+import sys
 import requests
 
 if __name__ == '__main__':
 
-    user = argv[1]
-    tok = argv[2]
+    user = sys.argv[1]
+    tok = sys.argv[2]
 
     url = f'https://api.github.com/users/{user}'
 
