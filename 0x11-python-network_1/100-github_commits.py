@@ -14,19 +14,14 @@ import sys
 import requests
 
 if __name__ == '__main__':
-    if len(sys.argv) != 3:
-        print("Usage: python script.py <user> <repository>")
-        sys.exit(1)
 
-    user = sys.argv[1]
-    repos = sys.argv[2]
-    url = f'https://api.github.com/repos/{user}/{repos}/commits'
+    url = "https://api.github.com/repos/{}/{}/commits".format(
+        sys.argv[2], sys.argv[1])
 
     response = requests.get(url)
-    response.raise_for_status()
     commits = response.json()
 
-    for commit in commits[:10]:
-        name = commit.get('commit').get('author').get('name')
-        sha = (commit.get('sha'))
-        print(f"{sha}: {name}")
+    for i in range(10):
+        print("{}: {}".format(
+            commits[i].get("sha"),
+            commits[i].get("commit").get("author").get("name")))
