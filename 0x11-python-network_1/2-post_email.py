@@ -7,15 +7,15 @@ import urllib.request
 import sys
 import urllib.parse
 
+if __name__ == '__main__':
+    url = sys.argv[1]
+    email = {"email": sys.argv[2]}
 
-url = sys.argv[1]
-email = {"email": sys.argv[2]}
+    en_data = urllib.parse.urlencode(email).encode("ascii")
 
-en_data = urllib.parse.urlencode(email).encode("ascii")
+    request = urllib.request.Request(url, en_data)
 
-request = urllib.request.Request(url, en_data)
-
-with urllib.request.urlopen(request) as res:
-    # Read and decode the response content
-    result = res.read().decode('utf-8')
-    print(result)
+    with urllib.request.urlopen(request) as res:
+        # Read and decode the response content
+        result = res.read().decode('utf-8')
+        print(result)

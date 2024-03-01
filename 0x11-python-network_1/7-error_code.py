@@ -4,12 +4,13 @@
 import requests
 import sys
 
-url = sys.argv[1]
+if __name__ == '__main__':
+    url = sys.argv[1]
 
-re = requests.get(url)
+    re = requests.get(url)
 
-if re.status_code >= 400:
-    print('Error code:', re.status_code)
+    if re.status_code >= 400:
+        print('Error code:', re.status_code)
 
-else:
-    print(re.text)
+    else:
+        print(re.text)
