@@ -7,6 +7,7 @@ import sys
 url = sys.argv[1]
 email = sys.argv[2]
 
-data = {"email", email}
+data = {"email": email}
 
 re = requests.post(url, data=data)
+print(re.text)
