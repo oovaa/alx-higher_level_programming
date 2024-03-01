@@ -11,5 +11,5 @@ try:
         body_content = res.read()
         utf8_content = body_content.decode('utf-8')
         print(utf8_content)
-except HTTPError:
-    print("Error code:", HTTPError)
+except HTTPError as e:
+    print("Error code:", e.code)
