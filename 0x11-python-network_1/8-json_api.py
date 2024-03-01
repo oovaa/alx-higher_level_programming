@@ -20,7 +20,7 @@ if __name__ == '__main__':
     try:
         js = re.json()
         if js:
-            print(f"[{js['id']}] {js['name']}")
+            print(f"[{js.get('id')}] {js.get('name')}")
         else:
             print("No result")
     except ValueError:
