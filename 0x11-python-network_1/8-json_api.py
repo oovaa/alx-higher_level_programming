@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """# Write a Python script that fetches
 # https://alx-intranet.hbtn.io/status
 """
