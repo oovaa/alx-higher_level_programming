@@ -10,5 +10,6 @@ try:
     with urllib.request.urlopen(sys.argv[1]) as res:
         body_content = res.read()
         utf8_content = body_content.decode('utf-8')
+        print(utf8_content)
 except HTTPError:
-    print("Error code:", HTTPError.code)
+    print("Error code:", HTTPError)
