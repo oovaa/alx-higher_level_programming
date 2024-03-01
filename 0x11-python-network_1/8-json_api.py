@@ -1,4 +1,3 @@
-#!/usr/bin/python3
 """# Write a Python script that fetches
 # https://alx-intranet.hbtn.io/status
 """
@@ -7,10 +6,9 @@ import sys
 
 if __name__ == '__main__':
     if len(sys.argv) == 1:
-        print("No result")
-        exit()
-
-    q = sys.argv[1]
+        q = ""
+    else:
+        q = sys.argv[1]
 
     url = 'http://0.0.0.0:5000/search_user'
 
@@ -18,8 +16,11 @@ if __name__ == '__main__':
 
     re = requests.post(url, data=data)
 
-    js = re.json()
-    if js:
-        print(f"[{js['id']}] {js['name']}")
-    else:
-        print("No result")
+    try:
+        js = re.json()
+        if js:
+            print(f"[{js['id']}] {js['name']}")
+        else:
+            print("No result")
+    except ValueError:
+        print("Not a valid JSON")
