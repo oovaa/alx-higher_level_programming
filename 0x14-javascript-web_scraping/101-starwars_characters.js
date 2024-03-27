@@ -2,31 +2,44 @@
 
 // @ts-check
 
+// Import the request library
 const request = require('request');
-const movie_id = process.argv[2];
 
-let used_url = 'https://swapi-api.alx-tools.com/api/films/' + movie_id;
+// Get the movie ID from the command-line arguments
+const movieId = process.argv[2];
 
-request.get(used_url, (err, res, body) => {
+// Construct the URL for the movie
+const movieUrl = `https://swapi-api.alx-tools.com/api/films/${movieId}`;
+
+// Fetch the movie data
+request.get(movieUrl, (err, res, body) => {
   if (err) {
     console.log(err);
     return;
   } else if (res.statusCode == 200) {
+    // Parse the response body
     body = JSON.parse(body);
-    let chars = body.characters;
-    chars_in_order(chars, 0);
+
+    // Get the list of characters
+    const characters = body.characters;
+
+    // Fetch and log the characters in order
+    fetchCharactersInOrder(characters, 0);
   } else console.log('error code :', res.statusCode);
 });
 
-let chars_in_order = (chars, i) => {
-  request(chars[i], (err, res, body) => {
+// Fetch and log the characters in order
+const fetchCharactersInOrder = (characters, index) => {
+  request(characters[index], (err, res, body) => {
     if (err) {
       console.log(err);
       return;
     }
+    // Log the character's name
     console.log(JSON.parse(body).name);
-    if (i + 1 < chars.length) {
-      chars_in_order(chars, i + 1);
-    }
+
+    // If there are more characters, fetch the next one
+    if (index + 1 < characters.length)
+      fetchCharactersInOrder(characters, index + 1);
   });
 };
