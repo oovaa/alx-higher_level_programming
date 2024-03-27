@@ -1,5 +1,7 @@
 #!/usr/bin/node
 
+// @ts-check
+
 const fs = require('fs');
 const request = require('request');
 
